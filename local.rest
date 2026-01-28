@@ -1,0 +1,88 @@
+GET http://localhost:3000/authors
+###
+
+GET http://localhost:3000/authors/696fac59127eed22c70358c3
+###
+
+POST http://localhost:3000/authors
+Content-Type: application/json
+
+{
+"firstName" :"Bob",
+"lastName" : "Stone",
+"biography" : "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobor…",
+"birthDate" : "1989-01-01",
+"nationality" : "South Africa",
+"email" : "tairdrie1@youku.com",
+"website" : "https://seattletimes.com/gravida/nisi/at/nibh.jsp"
+}
+###
+
+PUT http://localhost:3000/authors/697044f7b23495d6e743f302
+Content-Type: application/json
+
+{
+"firstName" :"Sue",
+"lastName" : "Stone",
+"biography" : "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobor…",
+"birthDate" : "1989-01-01",
+"nationality" : "South Africa",
+"email" : "tairdrie1@youku.com",
+"website" : "https://seattletimes.com/gravida/nisi/at/nibh.jsp"
+}
+###
+
+
+DELETE http://localhost:3000/authors/69703b5169ed7a18ceedc528
+###
+
+
+
+GET http://localhost:3000/books
+###
+
+GET http://localhost:3000/books/6970414066e8174f2b390366
+###
+
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+  "title": "Sinbad of the Seven Seas",
+  "authorId": "696fac59127eed22c70358c3",
+  "isbn": "398331078-8",
+  "publishedDate": "1979-06-15",
+  "publisher": "Centizu",
+  "genre": "Adventure|Fantasy|Romance",
+  "pageCount": 1066,
+  "language": "Icelandic",
+  "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+  "price": 169.68,
+  "inStock": false
+}
+
+###
+
+
+PUT http://localhost:3000/books/6970414066e8174f2b390366
+Content-Type: application/json
+
+{
+  "title": "Sinbad of the Seven Seas",
+  "authorId": "696fac59127eed22c70358c3",
+  "isbn": "398331078-8",
+  "publishedDate": "1975-06-15",
+  "publisher": "Centizu",
+  "genre": "Adventure|Fantasy|Romance",
+  "pageCount": 1066,
+  "language": "Icelandic",
+  "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+  "price": 169.68,
+  "inStock": false
+}
+
+###
+
+DELETE http://localhost:3000/books/697042055c9fd365dba2f2de
+###
+

@@ -1,0 +1,320 @@
+[{
+  "_id": {
+    "$oid": "6970414066e8174f2b390368"
+  },
+  "title": "Fierce People 2",
+  "authorId": "696fac59127eed22c70358c4",
+  "isbn": "764143315-4",
+  "publishedDate": "1979-04-15",
+  "publisher": "Plambee",
+  "genre": "Drama",
+  "pageCount": 91,
+  "language": "Church Slavic",
+  "description": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
+  "price": 163.85,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b39036a"
+  },
+  "title": "Body of War",
+  "authorId": "696fac59127eed22c70358c5",
+  "isbn": "500411017-4",
+  "publishedDate": "1979-04-15",
+  "publisher": "Photofeed",
+  "genre": "Documentary|War",
+  "pageCount": 571,
+  "language": "Dutch",
+  "description": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+  "price": 97.9,
+  "inStock": true
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390370"
+  },
+  "title": "Tremors 3: Back to Perfection",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "466921066-1",
+  "publishedDate": "1979-04-15",
+  "publisher": "Kazio",
+  "genre": "Comedy|Horror|Sci-Fi",
+  "pageCount": 751,
+  "language": "Venda",
+  "description": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.\n\nAenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+  "price": 143.86,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390371"
+  },
+  "title": "Shoot the Moon",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "338813590-8",
+  "publishedDate": "1979-04-15",
+  "publisher": "Twitterwire",
+  "genre": "Drama",
+  "pageCount": 985,
+  "language": "Somali",
+  "description": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.",
+  "price": 13.18,
+  "inStock": true
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390372"
+  },
+  "title": "Nothing Personal",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "287150479-2",
+  "publishedDate": "1979-04-15",
+  "publisher": "Twiyo",
+  "genre": "Drama|War",
+  "pageCount": 528,
+  "language": "Sotho, Southern",
+  "description": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+  "price": 147.3,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390374"
+  },
+  "title": "Blue Max, The",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "118949221-0",
+  "publishedDate": "1979-04-15",
+  "publisher": "Mybuzz",
+  "genre": "Adventure|Drama|War",
+  "pageCount": 135,
+  "language": "Swahili",
+  "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+  "price": 100.88,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390378"
+  },
+  "title": "Passed Away",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "365211365-9",
+  "publishedDate": "1979-04-15",
+  "publisher": "Aimbu",
+  "genre": "Comedy",
+  "pageCount": 407,
+  "language": "Latin",
+  "description": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
+  "price": 94.61,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390366"
+  },
+  "title": "Sinbad of the Seven Seas",
+  "authorId": "696fac59127eed22c70358c3",
+  "isbn": "398331078-8",
+  "publishedDate": "1975-06-15",
+  "publisher": "Centizu",
+  "genre": "Adventure|Fantasy|Romance",
+  "pageCount": 1066,
+  "language": "Icelandic",
+  "description": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+  "price": 169.68,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390367"
+  },
+  "title": "Georgia Rule",
+  "authorId": "696fac59127eed22c70358c4",
+  "isbn": "077775178-X",
+  "publishedDate": "1979-04-15",
+  "publisher": "Thoughtstorm",
+  "genre": "Comedy|Drama|Romance",
+  "pageCount": 319,
+  "language": "Kalaallisut",
+  "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+  "price": 198.72,
+  "inStock": true
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390369"
+  },
+  "title": "Tonight You're Mine",
+  "authorId": "696fac59127eed22c70358c5",
+  "isbn": "732829940-1",
+  "publishedDate": "1979-04-15",
+  "publisher": "Dabvine",
+  "genre": "Comedy|Drama",
+  "pageCount": 44,
+  "language": "Kazakh",
+  "description": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+  "price": 43.15,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b39036b"
+  },
+  "title": "Punchline",
+  "authorId": "696fac59127eed22c70358c6",
+  "isbn": "951055482-0",
+  "publishedDate": "1979-04-15",
+  "publisher": "Kare",
+  "genre": "Comedy|Drama",
+  "pageCount": 1467,
+  "language": "Malay",
+  "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
+  "price": 192.81,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390373"
+  },
+  "title": "Retro Puppet Master (Puppet Master 7)",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "300517731-9",
+  "publishedDate": "1979-04-15",
+  "publisher": "Zooveo",
+  "genre": "Horror|Sci-Fi|Thriller",
+  "pageCount": 183,
+  "language": "Guarani",
+  "description": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.\n\nMorbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.\n\nFusce consequat. Nulla nisl. Nunc nisl.",
+  "price": 144.97,
+  "inStock": true
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390375"
+  },
+  "title": "My Favorite Year",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "023119063-8",
+  "publishedDate": "1979-04-15",
+  "publisher": "Wikizz",
+  "genre": "Comedy",
+  "pageCount": 1215,
+  "language": "Hausa",
+  "description": "Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",
+  "price": 142.4,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b39036c"
+  },
+  "title": "Uprising",
+  "authorId": "696fac59127eed22c70358c6",
+  "isbn": "392964012-0",
+  "publishedDate": "1979-04-15",
+  "publisher": "Thoughtworks",
+  "genre": "Drama",
+  "pageCount": 70,
+  "language": "Ndebele, North",
+  "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+  "price": 34.28,
+  "inStock": true
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b39036e"
+  },
+  "title": "Loaded",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "717258926-2",
+  "publishedDate": "1979-04-15",
+  "publisher": "Feedmix",
+  "genre": "Action|Crime|Drama|Thriller",
+  "pageCount": 506,
+  "language": "Luba-Katanga",
+  "description": "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+  "price": 28.83,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b39036f"
+  },
+  "title": "M",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "093955777-0",
+  "publishedDate": "1979-04-15",
+  "publisher": "Rhyzio",
+  "genre": "Crime|Drama|Film-Noir|Thriller",
+  "pageCount": 235,
+  "language": "Lingala",
+  "description": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
+  "price": 88.77,
+  "inStock": true
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390379"
+  },
+  "title": "Welcome, or No Trespassing",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "081135037-1",
+  "publishedDate": "1979-04-15",
+  "publisher": "Rhynyx",
+  "genre": "Children|Comedy",
+  "pageCount": 476,
+  "language": "Basque",
+  "description": "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.\n\nSed ante. Vivamus tortor. Duis mattis egestas metus.\n\nAenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.",
+  "price": 98.52,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b39036d"
+  },
+  "title": "Long Ships, The",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "087819695-1",
+  "publishedDate": "1979-04-15",
+  "publisher": "Riffpedia",
+  "genre": "Adventure",
+  "pageCount": 1344,
+  "language": "Pali",
+  "description": "Fusce consequat. Nulla nisl. Nunc nisl.\n\nDuis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.",
+  "price": 96.71,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390376"
+  },
+  "title": "Born Losers, The",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "130338819-7",
+  "publishedDate": "1979-04-15",
+  "publisher": "Tazz",
+  "genre": "Action|Drama|Thriller",
+  "pageCount": 1005,
+  "language": "Occitan (post 1500)",
+  "description": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.",
+  "price": 122.32,
+  "inStock": false
+},
+{
+  "_id": {
+    "$oid": "6970414066e8174f2b390377"
+  },
+  "title": "Scent of a Woman",
+  "authorId": "696fac59127eed22c70358c7",
+  "isbn": "441975834-1",
+  "publishedDate": "1979-04-15",
+  "publisher": "Skiba",
+  "genre": "Drama",
+  "pageCount": 809,
+  "language": "Latvian",
+  "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
+  "price": 120.9,
+  "inStock": false
+}]
