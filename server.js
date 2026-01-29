@@ -10,6 +10,7 @@ const errorHandler = require("./middleware/errorHandler");
 const passport = require("passport");
 const session = require("express-session");
 const GitHubStrategy = require("passport-github2").Strategy;
+const User = require('./models/user');
 
 const PORT = process.env.PORT || 3000;
 
@@ -63,20 +64,25 @@ passport.use(
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
       callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
-    function (accessToken, refreshToken, profile, done) {
-      //user,findOrCreate({ githubId: profile.id }, function (err, user) {
-      return done(null, profile);
-      // });
-    },
-  ),
+    async function (accessToken, refreshToken, profile, done) {
+      // Use models/user.js to find or create the user in MongoDB
+      try {
+        const user = await User.findOrCreate(profile);
+        return done(null, user);
+      } catch (err) {
+        return done(err);
+      }
+    }
+  )
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user);
+  done(null, user.githubId);
 });
 
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
+passport.deserializeUser(async (id, done) => {
+  const user = await User.findById(id);
+  done(null, user);
 });
 
 app.get("/", (req, res) => {
@@ -91,7 +97,7 @@ app.get(
   "/github/callback",
   passport.authenticate("github", {
     failureRedirect: "/swagger/api-docs",
-    session: false,
+    session: true,
   }),
   (req, res) => {
     // Successful authentication, redirect home.
