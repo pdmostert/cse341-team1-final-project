@@ -30,7 +30,37 @@ This API uses OAuth 2.0 with GitHub for authentication.
   },
   host: "cse341-team1-final-project.onrender.com",
   schemes: ["https"],
-  definitions: {},
+  tags: [
+    {
+      name: "Admins",
+      description: "Operations restricted to administrative accounts"
+    },
+    {
+      name: "Customers",
+      description: "Operations available to authenticated customers"
+    },
+    {
+      name: "Books",
+      description: "Publicly accessible book information"
+    },
+    {
+      name: "Authors",
+      description: "Publicly accessible author information"
+    }
+  ],
+  definitions: {
+    User: {
+      type: "object",
+      properties: {
+        githubId: { type: "string" },
+        username: { type: "string" },
+        displayName: { type: "string" },
+        profilePic: { type: "string" },
+        role: { type: "string", example: "customer" },
+        createdAt: { type: "string", format: "date-time" }
+      }
+    }
+  },
 };
 
 const outputFile = "./swagger.json";
