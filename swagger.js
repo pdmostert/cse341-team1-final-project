@@ -33,20 +33,24 @@ This API uses OAuth 2.0 with GitHub for authentication.
   tags: [
     {
       name: "Admins",
-      description: "Operations restricted to administrative accounts"
+      description: "Operations restricted to administrative accounts",
     },
     {
       name: "Customers",
-      description: "Operations available to authenticated customers"
+      description: "Operations available to authenticated customers",
     },
     {
       name: "Books",
-      description: "Publicly accessible book information"
+      description: "Publicly accessible book information",
     },
     {
       name: "Authors",
-      description: "Publicly accessible author information"
-    }
+      description: "Publicly accessible author information",
+    },
+    {
+      name: "Stores",
+      description: "Publicly accessible store information",
+    },
   ],
   definitions: {
     User: {
@@ -57,9 +61,47 @@ This API uses OAuth 2.0 with GitHub for authentication.
         displayName: { type: "string" },
         profilePic: { type: "string" },
         role: { type: "string", example: "customer" },
-        createdAt: { type: "string", format: "date-time" }
-      }
-    }
+        createdAt: { type: "string", format: "date-time" },
+      },
+    },
+    Book: {
+      type: "object",
+      properties: {
+        title: { type: "string" },
+        authorId: { type: "string" },
+        isbn: { type: "string" },
+        publishedDate: { type: "string", format: "date" },
+        publisher: { type: "string" },
+        genre: { type: "string" },
+        pageCount: { type: "number" },
+        language: { type: "string" },
+        description: { type: "string" },
+        price: { type: "number" },
+        inStock: { type: "boolean" },
+      },
+    },
+    Author: {
+      type: "object",
+      properties: {
+        firstName: { type: "string" },
+        lastName: { type: "string" },
+        biography: { type: "string" },
+        birthDate: { type: "string", format: "date" },
+        nationality: { type: "string" },
+        email: { type: "string" },
+        website: { type: "string" },
+      },
+    },
+    Store: {
+      type: "object",
+      properties: {
+        name: { type: "string" },
+        location: { type: "string" },
+        established: { type: "string", format: "date" },
+        contactEmail: { type: "string" },
+        phoneNumber: { type: "string" },
+      },
+    },
   },
 };
 
