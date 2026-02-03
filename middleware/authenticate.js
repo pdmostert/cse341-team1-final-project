@@ -5,4 +5,15 @@ const isAuthenticated = (req, res, next) => {
   next();
 };
 
-module.exports = { isAuthenticated };
+const isAdmin = (req, res, next) => {
+  // Check if the user is authenticated and has the 'admin' role
+  if (req.session.user && req.session.user.role === "admin") {
+    next();
+  } else {
+    return res
+      .status(403)
+      .json({ message: "You do not have access. Admins only." });
+  }
+};
+
+module.exports = { isAuthenticated, isAdmin };

@@ -8,7 +8,7 @@ A RESTful API for managing a book store with authors and books. This project fea
 
 **Production URL:** [https://cse341-team1-final-project.onrender.com](https://cse341-team1-final-project.onrender.com)
 
-**API Documentation:** [https://cse341-team1-final-project.onrender.com/swagger](https://cse341-team1-final-project.onrender.com/swagger)
+**API Documentation:** [https://cse341-team1-final-project.onrender.com/swagger/api-docs](https://cse341-team1-final-project.onrender.com/swagger/api-docs)
 
 ## 📋 Features
 
@@ -101,8 +101,7 @@ A RESTful API for managing a book store with authors and books. This project fea
 
 ### Documentation
 
-- `GET /swagger` - View interactive API documentation
-
+- `GET /swagger/api-docs` - View interactive API documentation
 ## 📝 Data Models
 
 ### Book Schema

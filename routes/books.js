@@ -3,7 +3,7 @@ const router = express.Router();
 
 const booksController = require("../controllers/booksController");
 const { validateBook } = require("../middleware/booksValidation");
-const { isAuthenticated } = require("../middleware/authenticate");
+const { isAuthenticated, isAdmin } = require("../middleware/authenticate");
 
 router.get(
   "/",
@@ -11,6 +11,7 @@ router.get(
   // #swagger.description = 'Endpoint to get all books.'
   booksController.getAllBooks,
 );
+
 router.get(
   "/:id",
   // #swagger.tags = ['Books']
@@ -20,27 +21,30 @@ router.get(
 
 router.post(
   "/",
-  // #swagger.tags = ['Books']
+  // #swagger.tags = ['Admins']
   // #swagger.description = 'Endpoint to create a new book.'
   isAuthenticated,
+  isAdmin,
   ...validateBook,
   booksController.createBook,
 );
 
 router.put(
   "/:id",
-  // #swagger.tags = ['Books']
+  // #swagger.tags = ['Admins']
   // #swagger.description = 'Endpoint to update a book by ID.'
   isAuthenticated,
+  isAdmin,
   ...validateBook,
   booksController.updateBook,
 );
 
 router.delete(
   "/:id",
-  // #swagger.tags = ['Books']
+  // #swagger.tags = ['Admins']
   // #swagger.description = 'Endpoint to delete a book by ID.'
   isAuthenticated,
+  isAdmin,
   booksController.deleteBook,
 );
 
