@@ -1,7 +1,5 @@
-const { body} = require("express-validator");
+const { body } = require("express-validator");
 const handleValidationErrors = require("./validation").handleValidationErrors;
-
-
 
 const validateAuthor = [
   body("firstName")

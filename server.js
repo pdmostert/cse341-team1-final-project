@@ -10,7 +10,7 @@ const errorHandler = require("./middleware/errorHandler");
 const passport = require("passport");
 const session = require("express-session");
 const GitHubStrategy = require("passport-github2").Strategy;
-const User = require('./models/user');
+const User = require("./models/user");
 
 const PORT = process.env.PORT || 3000;
 
@@ -72,8 +72,8 @@ passport.use(
       } catch (err) {
         return done(err);
       }
-    }
-  )
+    },
+  ),
 );
 
 passport.serializeUser((user, done) => {

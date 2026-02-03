@@ -210,8 +210,6 @@ npm run format   # Format code with Prettier
 - Samuel Gomez
 - Kenneth Maberi
 
-
-
 ## 🤝 Contributing
 
 This is a class project for CSE341.

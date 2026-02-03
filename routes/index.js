@@ -9,16 +9,15 @@ const router = express.Router();
 // });
 
 router.get("/login", passport.authenticate("github"), (req, res) => {
-// #swagger.tags = ['Authentication']
-// #swagger.description = 'Endpoint to initiate GitHub OAuth authentication.'
+  // #swagger.tags = ['Authentication']
+  // #swagger.description = 'Endpoint to initiate GitHub OAuth authentication.'
 });
 
 router.get("/logout", (req, res) => {
-
   req.logout(() => {
     // #swagger.tags = ['Authentication']
     // #swagger.description = 'Endpoint to log out the user and destroy the session.'
-        req.session.destroy((err) => {
+    req.session.destroy((err) => {
       if (err) {
         return res.status(500).json({ message: "Error logging out" });
       }
@@ -29,6 +28,7 @@ router.get("/logout", (req, res) => {
 
 router.use("/books", require("./books"));
 router.use("/authors", require("./authors"));
+router.use("/store", require("./store"));
 router.use("/swagger", require("./swagger"));
 
 module.exports = router;
