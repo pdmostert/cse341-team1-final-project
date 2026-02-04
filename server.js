@@ -5,7 +5,6 @@ const passport = require("passport");
 const session = require("express-session");
 const GitHubStrategy = require("passport-github2").Strategy;
 const cors = require("cors");
-const User = require("./models/user");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -40,15 +39,18 @@ passport.use(
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
-        let user = await User.findOne({ githubId: profile.id });
+        const db = mongodb.getDb().db();
+        let user = await db.collection("users").findOne({ githubId: profile.id });
+        
         if (!user) {
-          user = await User.create({
+          user = {
             githubId: profile.id,
             username: profile.username,
             displayName: profile.displayName,
             profilePic: profile._json.avatar_url,
             role: "customer",
-          });
+          };
+          await db.collection("users").insertOne(user);
         }
         return done(null, user);
       } catch (err) {
@@ -64,7 +66,8 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findOne({ githubId: id });
+    const db = mongodb.getDb().db();
+    const user = await db.collection("users").findOne({ githubId: id });
     done(null, user);
   } catch (err) {
     done(err, null);
@@ -99,10 +102,9 @@ app.get("/", (req, res) => {
 
 app.use("/", require("./routes"));
 
-// Error Handling Middleware
+// Error Handling
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send({ message: err.message || "An internal server error occurred" });
+  res.status(500).send({ message: err.message || "Internal Server Error" });
 });
 
 // Database Initialization
