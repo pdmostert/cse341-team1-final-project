@@ -15,7 +15,7 @@ router.get(
 
 router.get(
   "/:id",
-  // #swagger.tags = ['Customers']
+  // #swagger.tags = ['Users']
   // #swagger.description = 'Endpoint to get a user by GitHub ID.'
   isAuthenticated,
   usersController.getUserByGithubId,
