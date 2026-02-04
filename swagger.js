@@ -9,22 +9,19 @@ const doc = {
     This API uses OAuth 2.0 with GitHub for authentication.
 
     **To authenticate:**
-    1. Visit [/login](/login) to start the OAuth flow
-    2. After authorization, your session will be maintained via cookies
-
-    **To logout:**
-    - Visit [/logout](/logout)
+    1. Visit [/login](/login) to start the OAuth flow.
+    2. After GitHub authorization, your session is maintained via cookies.
 
     ## Roles & Permissions
     - **Admins**: Full CRUD access to Books, Authors, Users, and Storefront details.
-    - **Customers**: Can view Books, Authors, and Storefront info; can view their own User profile.
+    - **Users**: Can view Books, Authors, and Storefront info; can view their own User profile.
     - **Public**: Can view Books, Authors, and Storefront information without logging in.
 
-    **Protected Admin Routes:**
+    **Protected Admin Routes (Require Admin Role):**
     - POST/PUT/DELETE /books
     - POST/PUT/DELETE /authors
     - GET/PUT/DELETE /users
-    - PUT /store/:id - Update storefront information
+    - POST/PUT/DELETE /store
     `,
     version: "1.0.0",
   },
@@ -37,7 +34,7 @@ const doc = {
     },
     {
       name: "Users",
-      description: "Operations available to authenticated customers",
+      description: "Operations available to authenticated users",
     },
     {
       name: "Books",
