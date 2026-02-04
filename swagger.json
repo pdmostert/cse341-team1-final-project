@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "CSE 341 Final Project API",
-    "description": "API Documentation for CSE 341 Final Project - Book Store\n    \n    ## Authentication\n    This API uses OAuth 2.0 with GitHub for authentication.\n\n    **To authenticate:**\n    1. Visit [/login](/login) to start the OAuth flow\n    2. After authorization, your session will be maintained via cookies\n\n    **To logout:**\n    - Visit [/logout](/logout)\n\n    ## Roles & Permissions\n    - **Admins**: Full CRUD access to Books, Authors, Users, and Storefront details.\n    - **Customers**: Can view Books, Authors, and Storefront info; can view their own User profile.\n    - **Public**: Can view Books, Authors, and Storefront information without logging in.\n\n    **Protected Admin Routes:**\n    - POST/PUT/DELETE /books\n    - POST/PUT/DELETE /authors\n    - GET/PUT/DELETE /users\n    - PUT /store/:id - Update storefront information\n    ",
+    "description": "API Documentation for CSE 341 Final Project - Book Store\n    \n    ## Authentication\n    This API uses OAuth 2.0 with GitHub for authentication.\n\n    **To authenticate:**\n    1. Visit [/login](/login) to start the OAuth flow.\n    2. After GitHub authorization, your session is maintained via cookies.\n\n    ## Roles & Permissions\n    - **Admins**: Full CRUD access to Books, Authors, Users, and Storefront details.\n    - **Users**: Can view Books, Authors, and Storefront info; can view their own User profile.\n    - **Public**: Can view Books, Authors, and Storefront information without logging in.\n\n    **Protected Admin Routes (Require Admin Role):**\n    - POST/PUT/DELETE /books\n    - POST/PUT/DELETE /authors\n    - GET/PUT/DELETE /users\n    - POST/PUT/DELETE /store\n    ",
     "version": "1.0.0"
   },
   "host": "cse341-team1-final-project.onrender.com",
@@ -14,7 +14,7 @@
     },
     {
       "name": "Users",
-      "description": "Operations available to authenticated customers"
+      "description": "Operations available to authenticated users"
     },
     {
       "name": "Books",
@@ -480,7 +480,7 @@
         "tags": [
           "Bookstore"
         ],
-        "description": "Public endpoint to get bookstore information.",
+        "description": "Public endpoint to get all store information.",
         "responses": {
           "200": {
             "description": "OK"
@@ -489,9 +489,83 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Admins"
+        ],
+        "description": "Endpoint for admins to create a new store entry.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "location": {
+                  "example": "any"
+                },
+                "established": {
+                  "example": "any"
+                },
+                "contactEmail": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/store/{id}": {
+      "get": {
+        "tags": [
+          "Bookstore"
+        ],
+        "description": "Public endpoint to get a specific store by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
       "put": {
         "tags": [
           "Admins"
@@ -530,8 +604,45 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admins"
+        ],
+        "description": "Endpoint for admins to delete a store entry.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
