@@ -1,36 +1,33 @@
 const { body } = require("express-validator");
 const { handleValidationErrors } = require("./validation");
 
-const validateOrder = [
-  body("userId")
+const validateStore = [
+  body("name")
     .trim()
     .notEmpty()
-    .withMessage("User ID is required")
-    .isLength({ min: 24, max: 24 })
-    .withMessage("User ID must be a valid MongoDB ObjectId"),
+    .withMessage("Store name is required"),
 
-  body("items")
-    .isArray({ min: 1 })
-    .withMessage("Items must be a non-empty array"),
-
-  body("items.*.bookId")
+  body("location")
     .trim()
     .notEmpty()
-    .withMessage("Book ID is required for each item")
-    .isLength({ min: 24, max: 24 })
-    .withMessage("Book ID must be a valid MongoDB ObjectId"),
+    .withMessage("Location is required"),
 
-  body("items.*.quantity")
-    .isInt({ min: 1 })
-    .withMessage("Quantity must be a positive integer"),
+  body("established")
+    .isDate()
+    .withMessage("Established must be a valid date (YYYY-MM-DD)"),
 
-  body("totalPrice")
-    .isFloat({ min: 0 })
-    .withMessage("Total Price must be a non-negative number"),
+  body("contactEmail")
+    .isEmail()
+    .withMessage("Please provide a valid contact email"),
+
+  body("phoneNumber")
+    .trim()
+    .notEmpty()
+    .withMessage("Phone number is required"),
 
   handleValidationErrors,
 ];
 
 module.exports = {
-  validateOrder,
+  validateStore,
 };

@@ -6,25 +6,25 @@ const doc = {
     description: `API Documentation for CSE 341 Final Project - Book Store
     
     ## Authentication
+    This API uses OAuth 2.0 with GitHub for authentication.
 
-This API uses OAuth 2.0 with GitHub for authentication.
+    **To authenticate:**
+    1. Visit [/login](/login) to start the OAuth flow
+    2. After authorization, your session will be maintained via cookies
 
-**To authenticate:**
-1. Visit [/login](/login) to start the OAuth flow
-2. You'll be redirected to GitHub to authorize the application
-3. After authorization, you'll be redirected back and logged in
-4. Your session will be maintained via cookies
+    **To logout:**
+    - Visit [/logout](/logout)
 
-**To logout:**
-- Visit [/logout](/logout)
+    ## Roles & Permissions
+    - **Admins**: Full CRUD access to Books, Authors, Users, and Storefront details.
+    - **Customers**: Can view Books, Authors, and Storefront info; can view their own User profile.
+    - **Public**: Can view Books, Authors, and Storefront information without logging in.
 
-**Protected Routes:**
-- POST /books - Create a new book (requires authentication)
-- PUT /books/:id - Update a book (requires authentication)
-- DELETE /books/:id - Delete a book (requires authentication)
-- POST /authors - Create a new author (requires authentication)
-- PUT /authors/:id - Update an author (requires authentication)
-- DELETE /authors/:id - Delete an author (requires authentication)
+    **Protected Admin Routes:**
+    - POST/PUT/DELETE /books
+    - POST/PUT/DELETE /authors
+    - GET/PUT/DELETE /users
+    - PUT /store/:id - Update storefront information
     `,
     version: "1.0.0",
   },
@@ -36,7 +36,7 @@ This API uses OAuth 2.0 with GitHub for authentication.
       description: "Operations restricted to administrative accounts",
     },
     {
-      name: "Customers",
+      name: "Users",
       description: "Operations available to authenticated customers",
     },
     {
@@ -48,8 +48,8 @@ This API uses OAuth 2.0 with GitHub for authentication.
       description: "Publicly accessible author information",
     },
     {
-      name: "Stores",
-      description: "Publicly accessible store information",
+      name: "Bookstore",
+      description: "Publicly accessible storefront information",
     },
   ],
   definitions: {
