@@ -5,49 +5,42 @@ const doc = {
     title: "CSE 341 Final Project API",
     description: `API Documentation for CSE 341 Final Project - Book Store
     
-    ## Authentication
-    This API uses OAuth 2.0 with GitHub for authentication.
+Authentication
 
-    **To authenticate:**
-    1. Visit [/login](/login) to start the OAuth flow.
-    2. After GitHub authorization, your session is maintained via cookies.
+This API uses OAuth 2.0 with GitHub for authentication.
 
-    ## Roles & Permissions
-    - **Admins**: Full CRUD access to Books, Authors, Users, and Storefront details.
-    - **Users**: Can view Books, Authors, and Storefront info; can view their own User profile.
-    - **Public**: Can view Books, Authors, and Storefront information without logging in.
+To authenticate:
+1. Visit /login to start the OAuth flow
+2. You will be redirected to GitHub to authorize the application
+3. After authorization, you will be redirected back and logged in
+4. Your session will be maintained via cookies
 
-    **Protected Admin Routes (Require Admin Role):**
-    - POST/PUT/DELETE /books
-    - POST/PUT/DELETE /authors
-    - GET/PUT/DELETE /users
-    - POST/PUT/DELETE /store
-    `,
+To logout:
+- Visit /logout
+
+Protected Routes:
+- POST /books - Create a new book (requires authentication)
+- PUT /books/:id - Update a book (requires authentication)
+- DELETE /books/:id - Delete a book (requires authentication)
+- POST /authors - Create a new author (requires authentication)
+- PUT /authors/:id - Update an author (requires authentication)
+- DELETE /authors/:id - Delete an author (requires authentication)
+- POST /store - Create a new store (requires authentication)
+- PUT /store/:id - Update store info (requires authentication)
+- DELETE /store/:id - Delete a store (requires authentication)
+- GET /users - Get all users (requires authentication)
+- PUT /users/:id - Update user role (requires authentication)
+- DELETE /users/:id - Delete a user (requires authentication)`,
     version: "1.0.0",
   },
   host: "cse341-team1-final-project.onrender.com",
   schemes: ["https"],
   tags: [
-    {
-      name: "Admins",
-      description: "Operations restricted to administrative accounts",
-    },
-    {
-      name: "Users",
-      description: "Operations available to authenticated users",
-    },
-    {
-      name: "Books",
-      description: "Publicly accessible book information",
-    },
-    {
-      name: "Authors",
-      description: "Publicly accessible author information",
-    },
-    {
-      name: "Bookstore",
-      description: "Publicly accessible storefront information",
-    },
+    { name: "Admins", description: "Operations restricted to administrative accounts" },
+    { name: "Customers", description: "Operations available to authenticated customers" },
+    { name: "Books", description: "Publicly accessible book information" },
+    { name: "Authors", description: "Publicly accessible author information" },
+    { name: "Bookstore", description: "Publicly accessible storefront information" },
   ],
   definitions: {
     User: {
@@ -103,7 +96,13 @@ const doc = {
 };
 
 const outputFile = "./swagger.json";
-const endpointsFiles = ["./routes/index.js"];
 
-// Generate swagger.json
+const endpointsFiles = [
+  "./routes/store.js",
+  "./routes/books.js",
+  "./routes/authors.js",
+  "./routes/users.js",
+  "./routes/index.js"
+];
+
 swaggerAutogen(outputFile, endpointsFiles, doc);

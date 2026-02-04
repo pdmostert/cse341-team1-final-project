@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "CSE 341 Final Project API",
-    "description": "API Documentation for CSE 341 Final Project - Book Store\n    \n    ## Authentication\n    This API uses OAuth 2.0 with GitHub for authentication.\n\n    **To authenticate:**\n    1. Visit [/login](/login) to start the OAuth flow.\n    2. After GitHub authorization, your session is maintained via cookies.\n\n    ## Roles & Permissions\n    - **Admins**: Full CRUD access to Books, Authors, Users, and Storefront details.\n    - **Users**: Can view Books, Authors, and Storefront info; can view their own User profile.\n    - **Public**: Can view Books, Authors, and Storefront information without logging in.\n\n    **Protected Admin Routes (Require Admin Role):**\n    - POST/PUT/DELETE /books\n    - POST/PUT/DELETE /authors\n    - GET/PUT/DELETE /users\n    - POST/PUT/DELETE /store\n    ",
+    "description": "API Documentation for CSE 341 Final Project - Book Store\n    \nAuthentication\n\nThis API uses OAuth 2.0 with GitHub for authentication.\n\nTo authenticate:\n1. Visit /login to start the OAuth flow\n2. You will be redirected to GitHub to authorize the application\n3. After authorization, you will be redirected back and logged in\n4. Your session will be maintained via cookies\n\nTo logout:\n- Visit /logout\n\nProtected Routes:\n- POST /books - Create a new book (requires authentication)\n- PUT /books/:id - Update a book (requires authentication)\n- DELETE /books/:id - Delete a book (requires authentication)\n- POST /authors - Create a new author (requires authentication)\n- PUT /authors/:id - Update an author (requires authentication)\n- DELETE /authors/:id - Delete an author (requires authentication)\n- POST /store - Create a new store (requires authentication)\n- PUT /store/:id - Update store info (requires authentication)\n- DELETE /store/:id - Delete a store (requires authentication)\n- GET /users - Get all users (requires authentication)\n- PUT /users/:id - Update user role (requires authentication)\n- DELETE /users/:id - Delete a user (requires authentication)",
     "version": "1.0.0"
   },
   "host": "cse341-team1-final-project.onrender.com",
@@ -13,8 +13,8 @@
       "description": "Operations restricted to administrative accounts"
     },
     {
-      "name": "Users",
-      "description": "Operations available to authenticated users"
+      "name": "Customers",
+      "description": "Operations available to authenticated customers"
     },
     {
       "name": "Books",
@@ -33,6 +33,193 @@
     "https"
   ],
   "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Admins"
+        ],
+        "description": "Endpoint to get all users.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Admins"
+        ],
+        "description": "Endpoint to create a new author.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "biography": {
+                  "example": "any"
+                },
+                "birthDate": {
+                  "example": "any"
+                },
+                "nationality": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "website": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Endpoint to get a user by GitHub ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Admins"
+        ],
+        "description": "Endpoint to update a user role.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "role": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Admins"
+        ],
+        "description": "Endpoint to delete a user.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/login": {
       "get": {
         "tags": [

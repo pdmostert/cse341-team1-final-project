@@ -9,14 +9,14 @@ router.get(
   "/",
   // #swagger.tags = ['Bookstore']
   // #swagger.description = 'Public endpoint to get all store information.'
-  storeController.getStoreInfo,
+  storeController.getStoreInfo
 );
 
 router.get(
   "/:id",
   // #swagger.tags = ['Bookstore']
   // #swagger.description = 'Public endpoint to get a specific store by ID.'
-  storeController.getStoreById,
+  storeController.getStoreById
 );
 
 router.post(
@@ -26,7 +26,7 @@ router.post(
   isAuthenticated,
   isAdmin,
   validateStore,
-  storeController.createStore,
+  storeController.createStore
 );
 
 router.put(
@@ -36,7 +36,7 @@ router.put(
   isAuthenticated,
   isAdmin,
   validateStore,
-  storeController.updateStoreInfo,
+  storeController.updateStoreInfo
 );
 
 router.delete(
@@ -45,7 +45,7 @@ router.delete(
   // #swagger.description = 'Endpoint for admins to delete a store entry.'
   isAuthenticated,
   isAdmin,
-  storeController.deleteStore,
+  storeController.deleteStore
 );
 
 module.exports = router;
