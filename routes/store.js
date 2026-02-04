@@ -8,44 +8,44 @@ const { validateStore } = require("../middleware/storeValidation");
 router.get(
   "/",
   // #swagger.tags = ['Bookstore']
-  // #swagger.description = 'Public endpoint to get all store information.'
-  storeController.getStoreInfo
+  // #swagger.description = 'Endpoint to get all store information.'
+  storeController.getStoreInfo,
 );
 
 router.get(
   "/:id",
   // #swagger.tags = ['Bookstore']
-  // #swagger.description = 'Public endpoint to get a specific store by ID.'
-  storeController.getStoreById
+  // #swagger.description = 'Endpoint to get a store by ID.'
+  storeController.getStoreById,
 );
 
 router.post(
   "/",
   // #swagger.tags = ['Admins']
-  // #swagger.description = 'Endpoint for admins to create a new store entry.'
+  // #swagger.description = 'Endpoint to create a new store.'
   isAuthenticated,
   isAdmin,
   validateStore,
-  storeController.createStore
+  storeController.createStore,
 );
 
 router.put(
   "/:id",
   // #swagger.tags = ['Admins']
-  // #swagger.description = 'Endpoint for admins to update store information.'
+  // #swagger.description = 'Endpoint to update store info.'
   isAuthenticated,
   isAdmin,
   validateStore,
-  storeController.updateStoreInfo
+  storeController.updateStoreInfo,
 );
 
 router.delete(
   "/:id",
   // #swagger.tags = ['Admins']
-  // #swagger.description = 'Endpoint for admins to delete a store entry.'
+  // #swagger.description = 'Endpoint to delete a store.'
   isAuthenticated,
   isAdmin,
-  storeController.deleteStore
+  storeController.deleteStore,
 );
 
 module.exports = router;

@@ -1,19 +1,16 @@
 const isAuthenticated = (req, res, next) => {
-  if (req.session.user === undefined) {
-    return res.status(401).json({ message: "You do not have access" });
+  if (req.isAuthenticated()) {
+    return next();
   }
-  next();
+  return res.status(401).json({ message: "You must be logged in." });
 };
 
 const isAdmin = (req, res, next) => {
-  // Check if the user is authenticated and has the 'admin' role
-  if (req.session.user && req.session.user.role === "admin") {
-    next();
-  } else {
-    return res
-      .status(403)
-      .json({ message: "You do not have access. Admins only." });
+  // Only allow if user exists AND has the admin role
+  if (req.user && req.user.role === 'admin') {
+    return next();
   }
+  return res.status(403).json({ message: "Access Denied: Admins Only" });
 };
 
 module.exports = { isAuthenticated, isAdmin };

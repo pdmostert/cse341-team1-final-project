@@ -98,11 +98,11 @@ Protected Routes:
 const outputFile = "./swagger.json";
 
 const endpointsFiles = [
+  "./routes/index.js",
   "./routes/store.js",
   "./routes/books.js",
   "./routes/authors.js",
-  "./routes/users.js",
-  "./routes/index.js"
+  "./routes/users.js"
 ];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);
