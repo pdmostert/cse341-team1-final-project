@@ -7,7 +7,8 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "start": "node swagger.js && node server.js",
     "dev": "nodemon server.js",
     "lint": "eslint .",
@@ -30,12 +31,23 @@
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "@eslint/json": "^0.14.0",
+    "@shelf/jest-mongodb": "^6.0.2",
+    "@types/jest": "^30.0.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "globals": "^17.0.0",
+    "jest": "^30.2.0",
     "nodemon": "^3.1.11",
     "prettier": "^3.8.0",
+    "supertest": "^7.2.2",
     "swagger-autogen": "^2.23.7"
+  },
+  "jest": {
+    "preset": "@shelf/jest-mongodb",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "<rootDir>/__test__/setup.js"
+    ]
   }
 }

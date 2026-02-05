@@ -1,6 +1,6 @@
-const dotenv = require("dotenv");
-dotenv.config();
 const process = require("process");
+const dotenv = require("dotenv");
+dotenv.config({ quiet: process.env.NODE_ENV === "test" });
 const MongoClient = require("mongodb").MongoClient;
 
 let _db;
@@ -10,7 +10,16 @@ const initDb = (callback) => {
     console.log("Db is already initialized!");
     return callback(null, _db);
   }
-  MongoClient.connect(process.env.MONGODB_URI)
+  const mongoUri = process.env.MONGODB_URI || process.env.MONGO_URL;
+  if (!mongoUri) {
+    return callback(
+      new Error(
+        "Missing Mongo connection string. Set MONGODB_URI (normal) or MONGO_URL (jest-mongodb).",
+      ),
+    );
+  }
+
+  MongoClient.connect(mongoUri)
     .then((client) => {
       _db = client;
       callback(null, _db);
