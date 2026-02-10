@@ -21,6 +21,7 @@ app.use(
       "Z-Key",
       "Authorization",
     ],
+    credentials: true,
   }),
 );
 
@@ -38,6 +39,7 @@ app.use(
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     },
   }),
 );
@@ -66,14 +68,20 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
             user = {
               githubId: profile.id,
               username: profile.username,
-              displayName: profile.displayName,
+              displayName: profile.displayName || profile.username,
               profilePic: profile._json.avatar_url,
               role: "customer",
+              createdAt: new Date(),
             };
-            await db.collection("users").insertOne(user);
+            const result = await db.collection("users").insertOne(user);
+            user._id = result.insertedId;
+            console.log("New user created:", user.username);
+          } else {
+            console.log("Existing user found:", user.username);
           }
           return done(null, user);
         } catch (err) {
+          console.error("GitHub Strategy error:", err);
           return done(err, null);
         }
       },
@@ -84,6 +92,7 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
 }
 
 passport.serializeUser((user, done) => {
+  console.log("Serializing user:", user.githubId);
   done(null, user.githubId);
 });
 
@@ -91,17 +100,38 @@ passport.deserializeUser(async (id, done) => {
   try {
     const db = mongodb.getDb().db();
     const user = await db.collection("users").findOne({ githubId: id });
+    console.log("Deserializing user:", user ? user.username : "not found");
     done(null, user);
   } catch (err) {
+    console.error("Deserialize error:", err);
     done(err, null);
   }
 });
 
 // Home Route
 app.get("/", (req, res) => {
-  res.send(
-    req.isAuthenticated() ? `Logged in as ${req.user.username}` : "Logged Out",
-  );
+  console.log("Home route - isAuthenticated:", req.isAuthenticated());
+  console.log("Home route - user:", req.user);
+
+  if (req.isAuthenticated() && req.user) {
+    res.status(200).json({
+      message: `Logged in as ${req.user.username}`,
+      user: {
+        username: req.user.username,
+        displayName: req.user.displayName,
+        profilePic: req.user.profilePic,
+        role: req.user.role,
+      },
+    });
+  } else {
+    res.status(200).json({
+      message: "Logged Out",
+      links: {
+        login: "/login",
+        apiDocs: "/swagger/api-docs",
+      },
+    });
+  }
 });
 
 // API Routes
