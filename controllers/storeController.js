@@ -3,7 +3,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 const getStoreInfo = async (req, res, next) => {
   try {
-    const stores = await mongodb.getDb().db().collection("store").find();
+    const stores = await mongodb.getDb().db().collection("stores").find();
     const storeList = await stores.toArray();
     res.status(200).json(storeList);
   } catch (err) {
@@ -20,7 +20,7 @@ const getStoreById = async (req, res, next) => {
     const store = await mongodb
       .getDb()
       .db()
-      .collection("store")
+      .collection("stores")
       .findOne({ _id: storeId });
     if (!store) {
       return res.status(404).json({ message: "Store not found" });
@@ -38,17 +38,19 @@ const createStore = async (req, res, next) => {
       location: req.body.location,
       established: req.body.established,
       contactEmail: req.body.contactEmail,
-      phoneNumber: req.body.phoneNumber
+      phoneNumber: req.body.phoneNumber,
     };
     const result = await mongodb
       .getDb()
       .db()
-      .collection("store")
+      .collection("stores")
       .insertOne(newStore);
     if (result.acknowledged) {
       res.status(201).json(result);
     } else {
-      res.status(500).json({ message: "Some error occurred while creating the store." });
+      res
+        .status(500)
+        .json({ message: "Some error occurred while creating the store." });
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -66,12 +68,12 @@ const updateStoreInfo = async (req, res, next) => {
       location: req.body.location,
       established: req.body.established,
       contactEmail: req.body.contactEmail,
-      phoneNumber: req.body.phoneNumber
+      phoneNumber: req.body.phoneNumber,
     };
     const result = await mongodb
       .getDb()
       .db()
-      .collection("store")
+      .collection("stores")
       .updateOne({ _id: storeId }, { $set: updatedData });
     if (result.modifiedCount > 0) {
       res.status(200).json({ message: "Store updated" });
@@ -92,7 +94,7 @@ const deleteStore = async (req, res, next) => {
     const result = await mongodb
       .getDb()
       .db()
-      .collection("store")
+      .collection("stores")
       .deleteOne({ _id: storeId });
     if (result.deletedCount > 0) {
       res.status(200).json({ message: "Store deleted" });

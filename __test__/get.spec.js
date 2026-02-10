@@ -123,3 +123,83 @@ describe("GET /books/:id", () => {
     expect(response.body.author).toBe(seedBook.author);
   });
 });
+
+describe("GET /Stores", () => {
+  test("returns 200 and an array of stores", async () => {
+    const db = mongodb.getDb().db();
+    const seedStore = {
+      name: "Seed Store",
+      location: "Seed Location",
+      contactEmail: "seed.store@example.com",
+      contactPhone: "123-456-7890",
+      openingHours: "9am - 9pm",
+    };
+    const insertResult = await db.collection("stores").insertOne(seedStore);
+    const seededId = insertResult.insertedId.toString();
+    const response = await request(app).get("/stores").expect(200);
+    expect(Array.isArray(response.body)).toBe(true);
+    expect(response.body.length).toBeGreaterThanOrEqual(1);
+    const seeded = response.body.find((s) => s._id === seededId);
+    expect(seeded).toBeDefined();
+    expect(seeded.name).toBe(seedStore.name);
+    expect(seeded.location).toBe(seedStore.location);
+  });
+});
+
+describe("GET /stores/:id", () => {
+  test("returns 200 and the store for an existing id", async () => {
+    const db = mongodb.getDb().db();
+    const seedStore = {
+      name: "Existing Store",
+      location: "Existing Location",
+      contactEmail: "existing.store@example.com",
+      contactPhone: "987-654-3210",
+      openingHours: "10am - 8pm",
+    };
+    const insertResult = await db.collection("stores").insertOne(seedStore);
+    const id = insertResult.insertedId.toString();
+    const response = await request(app).get(`/stores/${id}`).expect(200);
+    expect(response.body).toBeDefined();
+    expect(response.body._id).toBe(id);
+    expect(response.body.name).toBe(seedStore.name);
+    expect(response.body.location).toBe(seedStore.location);
+  });
+});
+
+describe("Get /Users", () => {
+  test("returns 200 and an array of users", async () => {
+    const db = mongodb.getDb().db();
+    const seedUser = {
+      username: "seeduser",
+      email: "seed.user@example.com",
+      password: "password123",
+      role: "user",
+    };
+    const insertResult = await db.collection("users").insertOne(seedUser);
+    const seededId = insertResult.insertedId.toString();
+    const response = await request(app).get("/users").expect(200);
+    expect(Array.isArray(response.body)).toBe(true);
+    expect(response.body.length).toBeGreaterThanOrEqual(1);
+    const seeded = response.body.find((u) => u._id === seededId);
+    expect(seeded).toBeDefined();
+    expect(seeded.username).toBe(seedUser.username);
+    expect(seeded.email).toBe(seedUser.email);
+  });
+
+  test("returns 200 and the user for an existing id", async () => {
+    const db = mongodb.getDb().db();  
+    const seedUser = {
+      username: "existinguser",
+      email: "existing.user@example.com",
+      password: "password456",
+      role: "admin",
+    };
+    const insertResult = await db.collection("users").insertOne(seedUser);
+    const id = insertResult.insertedId.toString();
+    const response = await request(app).get(`/users/${id}`).expect(200);  
+    expect(response.body).toBeDefined();
+    expect(response.body._id).toBe(id);
+    expect(response.body.username).toBe(seedUser.username);
+    expect(response.body.email).toBe(seedUser.email);
+  });
+});

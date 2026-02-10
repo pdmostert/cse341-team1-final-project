@@ -475,7 +475,7 @@
         }
       }
     },
-    "/store/": {
+    "/stores/": {
       "get": {
         "tags": [
           "Bookstore"
@@ -537,7 +537,7 @@
         }
       }
     },
-    "/store/{id}": {
+    "/stores/{id}": {
       "get": {
         "tags": [
           "Bookstore"
