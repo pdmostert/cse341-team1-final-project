@@ -33,9 +33,9 @@ app.use(
     secret:
       process.env.SESSION_SECRET || "fallback-secret-change-in-production",
     resave: false,
-    saveUninitialized: false, // Changed to false for security
+    saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV === "production", // HTTPS only in production
+      secure: process.env.NODE_ENV === "production",
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
     },
@@ -103,18 +103,6 @@ app.get("/", (req, res) => {
     req.isAuthenticated() ? `Logged in as ${req.user.username}` : "Logged Out",
   );
 });
-
-// Auth Routes (GitHub callback must be before other routes)
-app.get(
-  "/github/callback",
-  passport.authenticate("github", {
-    failureRedirect: "/api-docs",
-    session: true,
-  }),
-  (req, res) => {
-    res.redirect("/");
-  },
-);
 
 // API Routes
 app.use("/", require("./routes"));

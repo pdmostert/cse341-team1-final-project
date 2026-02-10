@@ -2,15 +2,23 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 
-// router.get("/", (req, res) => {
-//   // #swagger.tags = ['Home']
-//   // #swagger.description = 'Endpoint to return a welcome message.'
-//   res.send("Welcome to the Project 2 Home Page!");
-// });
-
+// GitHub OAuth routes
 router.get("/login", passport.authenticate("github"));
 // #swagger.tags = ['Authentication']
 // #swagger.description = 'Endpoint to initiate GitHub OAuth authentication.'
+
+router.get(
+  "/github/callback",
+  passport.authenticate("github", {
+    failureRedirect: "/swagger/api-docs",
+    session: true,
+  }),
+  (req, res) => {
+    // #swagger.tags = ['Authentication']
+    // #swagger.description = 'GitHub OAuth callback endpoint.'
+    res.redirect("/");
+  }
+);
 
 router.get("/logout", (req, res) => {
   req.logout(() => {
