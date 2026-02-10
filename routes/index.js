@@ -8,10 +8,9 @@ const router = express.Router();
 //   res.send("Welcome to the Project 2 Home Page!");
 // });
 
-router.get("/login", passport.authenticate("github"), (req, res) => {
-  // #swagger.tags = ['Authentication']
-  // #swagger.description = 'Endpoint to initiate GitHub OAuth authentication.'
-});
+router.get("/login", passport.authenticate("github"));
+// #swagger.tags = ['Authentication']
+// #swagger.description = 'Endpoint to initiate GitHub OAuth authentication.'
 
 router.get("/logout", (req, res) => {
   req.logout(() => {
