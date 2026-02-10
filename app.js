@@ -113,27 +113,10 @@ passport.deserializeUser(async (id, done) => {
 
 // Home Route
 app.get("/", (req, res) => {
-  console.log("Home route - isAuthenticated:", req.isAuthenticated());
-  console.log("Home route - user:", req.user);
-
   if (req.isAuthenticated() && req.user) {
-    res.status(200).json({
-      message: `Logged in as ${req.user.username}`,
-      user: {
-        username: req.user.username,
-        displayName: req.user.displayName,
-        profilePic: req.user.profilePic,
-        role: req.user.role,
-      },
-    });
+    res.send(`Logged in as ${req.user.username}`);
   } else {
-    res.status(200).json({
-      message: "Logged Out",
-      links: {
-        login: "/login",
-        apiDocs: "/swagger/api-docs",
-      },
-    });
+    res.send("Logged Out");
   }
 });
 

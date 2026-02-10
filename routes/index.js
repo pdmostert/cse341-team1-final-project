@@ -50,15 +50,6 @@ router.get("/logout", (req, res) => {
   });
 });
 
-// Debug endpoint to check session
-router.get("/debug/session", (req, res) => {
-  res.json({
-    isAuthenticated: req.isAuthenticated(),
-    session: req.session,
-    user: req.user,
-  });
-});
-
 router.use("/books", require("./books"));
 router.use("/authors", require("./authors"));
 router.use("/stores", require("./store"));
