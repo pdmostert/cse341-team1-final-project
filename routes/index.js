@@ -19,8 +19,18 @@ router.get(
   (req, res) => {
     // #swagger.tags = ['Authentication']
     // #swagger.description = 'GitHub OAuth callback endpoint.'
-    console.log("User authenticated:", req.user); // Debug log
-    res.redirect("/");
+    console.log("User authenticated:", req.user);
+    console.log("Session ID:", req.sessionID);
+    
+    // Explicitly save session before redirect (critical for production)
+    req.session.save((err) => {
+      if (err) {
+        console.error("Session save error:", err);
+        return res.status(500).json({ message: "Session save failed" });
+      }
+      console.log("Session saved successfully");
+      res.redirect("/");
+    });
   },
 );
 

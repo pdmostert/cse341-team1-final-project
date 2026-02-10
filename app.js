@@ -8,6 +8,9 @@ const cors = require("cors");
 
 const app = express();
 
+// Trust proxy - Critical for Render/Heroku to make secure cookies work
+app.set("trust proxy", 1);
+
 // CORS Configuration - Simplified
 app.use(
   cors({
