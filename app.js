@@ -53,9 +53,7 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
       {
         clientID: process.env.GITHUB_CLIENT_ID,
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        callbackURL:
-          process.env.GITHUB_CALLBACK_URL ||
-          "http://localhost:3000/github/callback",
+        callbackURL: process.env.GITHUB_CALLBACK_URL,
       },
       async (accessToken, refreshToken, profile, done) => {
         try {
@@ -81,7 +79,7 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
       },
     ),
   );
-} else {
+} else if (process.env.NODE_ENV !== "test") {
   console.warn("GitHub OAuth credentials not configured");
 }
 
