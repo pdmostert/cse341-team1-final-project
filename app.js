@@ -97,16 +97,14 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-// Auth Routes
-app.get("/login", passport.authenticate("github"));
-
-app.get("/logout", (req, res, next) => {
-  req.logout((err) => {
-    if (err) return next(err);
-    res.redirect("/");
-  });
+// Home Route
+app.get("/", (req, res) => {
+  res.send(
+    req.isAuthenticated() ? `Logged in as ${req.user.username}` : "Logged Out",
+  );
 });
 
+// Auth Routes (GitHub callback must be before other routes)
 app.get(
   "/github/callback",
   passport.authenticate("github", {
@@ -117,13 +115,6 @@ app.get(
     res.redirect("/");
   },
 );
-
-// Home Route
-app.get("/", (req, res) => {
-  res.send(
-    req.isAuthenticated() ? `Logged in as ${req.user.username}` : "Logged Out",
-  );
-});
 
 // API Routes
 app.use("/", require("./routes"));
