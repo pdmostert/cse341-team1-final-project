@@ -45,9 +45,6 @@
   },
   "jest": {
     "preset": "@shelf/jest-mongodb",
-    "testEnvironment": "node",
-    "setupFilesAfterEnv": [
-      "<rootDir>/__test__/setup.js"
-    ]
+    "testEnvironment": "node"
   }
 }
