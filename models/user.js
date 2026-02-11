@@ -1,7 +1,7 @@
 const mongodb = require("../data/database");
 
 const findOrCreate = async (profile) => {
-  const db = mongodb.getDb().db();
+  const db = mongodb.getDb();
   const collection = db.collection("users");
 
   // Use GitHub ID to find existing user
@@ -25,7 +25,7 @@ const findOrCreate = async (profile) => {
 };
 
 const findById = async (id) => {
-  const db = mongodb.getDb().db();
+  const db = mongodb.getDb();
   return await db.collection("users").findOne({ githubId: id });
 };
 

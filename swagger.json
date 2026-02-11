@@ -59,6 +59,16 @@
         }
       }
     },
+    "/docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/books/": {
       "get": {
         "tags": [
@@ -83,41 +93,29 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Store information",
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
-                  "example": "any"
+                "name": {
+                  "type": "string",
+                  "example": "String"
                 },
-                "authorId": {
-                  "example": "any"
+                "location": {
+                  "type": "string",
+                  "example": "String"
                 },
-                "isbn": {
-                  "example": "any"
+                "established": {
+                  "type": "string",
+                  "example": "String"
                 },
-                "publishedDate": {
-                  "example": "any"
+                "contactEmail": {
+                  "type": "string",
+                  "example": "String"
                 },
-                "publisher": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                },
-                "pageCount": {
-                  "example": "any"
-                },
-                "language": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "price": {
-                  "example": "any"
-                },
-                "inStock": {
-                  "example": "any"
+                "contactPhone": {
+                  "type": "string",
+                  "example": "String"
                 }
               }
             }
@@ -183,41 +181,29 @@
           {
             "name": "body",
             "in": "body",
+            "description": "Store information",
             "schema": {
               "type": "object",
               "properties": {
-                "title": {
-                  "example": "any"
+                "name": {
+                  "type": "string",
+                  "example": "String"
                 },
-                "authorId": {
-                  "example": "any"
+                "location": {
+                  "type": "string",
+                  "example": "String"
                 },
-                "isbn": {
-                  "example": "any"
+                "established": {
+                  "type": "string",
+                  "example": "String"
                 },
-                "publishedDate": {
-                  "example": "any"
+                "contactEmail": {
+                  "type": "string",
+                  "example": "String"
                 },
-                "publisher": {
-                  "example": "any"
-                },
-                "genre": {
-                  "example": "any"
-                },
-                "pageCount": {
-                  "example": "any"
-                },
-                "language": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "price": {
-                  "example": "any"
-                },
-                "inStock": {
-                  "example": "any"
+                "contactPhone": {
+                  "type": "string",
+                  "example": "String"
                 }
               }
             }
@@ -478,7 +464,7 @@
     "/store/inventory": {
       "get": {
         "tags": [
-          "Bookstore"
+          "Stores"
         ],
         "description": "Endpoint to get current inventory.",
         "responses": {
@@ -494,7 +480,7 @@
     "/store/order": {
       "post": {
         "tags": [
-          "Bookstore"
+          "Stores"
         ],
         "description": "Endpoint to place a new order.",
         "parameters": [
@@ -533,7 +519,7 @@
     "/store/order/{orderId}": {
       "get": {
         "tags": [
-          "Bookstore"
+          "Stores"
         ],
         "description": "Endpoint to get an order by ID.",
         "parameters": [
@@ -561,7 +547,7 @@
       },
       "delete": {
         "tags": [
-          "Bookstore"
+          "Stores"
         ],
         "description": "Endpoint to delete/cancel an order by ID.",
         "parameters": [
@@ -1033,10 +1019,6 @@
                 "type": {
                   "type": "string",
                   "example": "string"
-                },
-                "format": {
-                  "type": "string",
-                  "example": "date"
                 }
               }
             },
@@ -1049,7 +1031,7 @@
                 }
               }
             },
-            "phoneNumber": {
+            "contactPhone": {
               "type": "object",
               "properties": {
                 "type": {

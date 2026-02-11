@@ -57,24 +57,31 @@ app.use((req, res, next) => {
 //importing routes
 app.use("/", require("./routes"));
 
-passport.use(
-  new GitHubStrategy(
-    {
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: process.env.GITHUB_CALLBACK_URL,
-    },
-    async function (accessToken, refreshToken, profile, done) {
-      // Use models/user.js to find or create the user in MongoDB
-      try {
-        const user = await User.findOrCreate(profile);
-        return done(null, user);
-      } catch (err) {
-        return done(err);
-      }
-    },
-  ),
-);
+// GitHub Strategy configuration
+if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
+  passport.use(
+    new GitHubStrategy(
+      {
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+        callbackURL: process.env.GITHUB_CALLBACK_URL,
+      },
+      async function (accessToken, refreshToken, profile, done) {
+        // Use models/user.js to find or create the user in MongoDB
+        try {
+          const user = await User.findOrCreate(profile);
+          return done(null, user);
+        } catch (err) {
+          return done(err);
+        }
+      },
+    ),
+  );
+} else {
+  console.warn(
+    "Warning: GitHub OAuth credentials missing in .env file. Authentication will not work.",
+  );
+}
 
 passport.serializeUser((user, done) => {
   done(null, user.githubId);

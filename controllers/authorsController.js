@@ -3,7 +3,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 const getAllAuthors = async (req, res, next) => {
   try {
-    const authors = await mongodb.getDb().db().collection("authors").find();
+    const authors = await mongodb.getDb().collection("authors").find();
     const authorsList = await authors.toArray();
     res.status(200).json(authorsList);
   } catch (err) {
@@ -19,7 +19,6 @@ const getAuthorById = async (req, res, next) => {
     const authorId = new ObjectId(req.params.id);
     const author = await mongodb
       .getDb()
-      .db()
       .collection("authors")
       .findOne({ _id: authorId });
     if (!author) {
@@ -45,7 +44,6 @@ const createAuthor = async (req, res, next) => {
 
     const result = await mongodb
       .getDb()
-      .db()
       .collection("authors")
       .insertOne(newAuthor);
     if (result.acknowledged) {
@@ -77,7 +75,6 @@ const updateAuthor = async (req, res, next) => {
     };
     const result = await mongodb
       .getDb()
-      .db()
       .collection("authors")
       .updateOne({ _id: authorId }, { $set: updatedAuthor });
     if (result.modifiedCount > 0) {
@@ -100,7 +97,6 @@ const deleteAuthor = async (req, res, next) => {
     const authorId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDb()
-      .db()
       .collection("authors")
       .deleteOne({ _id: authorId });
     if (result.deletedCount > 0) {

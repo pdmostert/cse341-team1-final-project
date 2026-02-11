@@ -23,6 +23,17 @@ router.post(
   "/",
   // #swagger.tags = ['Admins']
   // #swagger.description = 'Endpoint to create a new book.'
+  /* #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Store information',
+        schema: {
+          name: 'String',
+          location: 'String',
+          established: 'String',
+          contactEmail: 'String',
+          contactPhone: 'String'
+        }
+  } */
   isAuthenticated,
   isAdmin,
   ...validateBook,
@@ -33,6 +44,17 @@ router.put(
   "/:id",
   // #swagger.tags = ['Admins']
   // #swagger.description = 'Endpoint to update a book by ID.'
+  /* #swagger.parameters['body'] = {
+        in: 'body',
+        description: 'Store information',
+        schema: {
+          name: 'String',
+          location: 'String',
+          established: 'String',
+          contactEmail: 'String',
+          contactPhone: 'String'
+        }
+  } */
   isAuthenticated,
   isAdmin,
   ...validateBook,

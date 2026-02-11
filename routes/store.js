@@ -7,14 +7,14 @@ const { validateOrder } = require("../middleware/storeValidation");
 
 router.get(
   "/inventory",
-  // #swagger.tags = ['Bookstore']
+  // #swagger.tags = ['Stores']
   // #swagger.description = 'Endpoint to get current inventory.'
   storeController.getInventory,
 );
 
 router.post(
   "/order",
-  // #swagger.tags = ['Bookstore']
+  // #swagger.tags = ['Stores']
   // #swagger.description = 'Endpoint to place a new order.'
   isAuthenticated,
   validateOrder,
@@ -23,14 +23,14 @@ router.post(
 
 router.get(
   "/order/:orderId",
-  // #swagger.tags = ['Bookstore']
+  // #swagger.tags = ['Stores']
   // #swagger.description = 'Endpoint to get an order by ID.'
   storeController.getOrderById,
 );
 
 router.delete(
   "/order/:orderId",
-  // #swagger.tags = ['Bookstore']
+  // #swagger.tags = ['Stores']
   // #swagger.description = 'Endpoint to delete/cancel an order by ID.'
   isAuthenticated,
   storeController.deleteOrder,

@@ -26,6 +26,10 @@ router.get("/logout", (req, res) => {
   });
 });
 
+router.get("/docs", (req, res) => {
+  res.redirect("/swagger/api-docs");
+});
+
 router.use("/books", require("./books"));
 router.use("/authors", require("./authors"));
 router.use("/store", require("./store"));

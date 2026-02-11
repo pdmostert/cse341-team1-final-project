@@ -7,9 +7,23 @@ const getInventory = async (req, res) => {
     // #swagger.description = 'Retrieve the current inventory of books.'
     const result = await mongodb
       .getDb()
-      .db()
       .collection("books")
       .find({}, { projection: { title: 1, inStock: 1, price: 1 } })
+      .toArray();
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+const getAllStores = async (req, res) => {
+  try {
+    // #swagger.tags = ['Bookstore']
+    // #swagger.description = 'Retrieve all bookstore locations.'
+    const result = await mongodb
+      .getDb()
+      .collection("contacts")
+      .find()
       .toArray();
     res.status(200).json(result);
   } catch (err) {
@@ -30,7 +44,6 @@ const createOrder = async (req, res) => {
     };
     const result = await mongodb
       .getDb()
-      .db()
       .collection("orders")
       .insertOne(order);
     if (result.acknowledged) {
@@ -60,7 +73,6 @@ const getOrderById = async (req, res) => {
     const orderId = new ObjectId(req.params.orderId);
     const result = await mongodb
       .getDb()
-      .db()
       .collection("orders")
       .findOne({ _id: orderId });
     if (!result) {
@@ -82,7 +94,6 @@ const deleteOrder = async (req, res) => {
     const orderId = new ObjectId(req.params.orderId);
     const result = await mongodb
       .getDb()
-      .db()
       .collection("orders")
       .deleteOne({ _id: orderId });
     if (result.deletedCount > 0) {

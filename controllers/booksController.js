@@ -3,7 +3,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 const getAllBooks = async (req, res, next) => {
   try {
-    const books = await mongodb.getDb().db().collection("books").find();
+    const books = await mongodb.getDb().collection("books").find();
     const booksList = await books.toArray();
     res.status(200).json(booksList);
   } catch (err) {
@@ -19,7 +19,6 @@ const getBookById = async (req, res, next) => {
     const bookId = new ObjectId(req.params.id);
     const book = await mongodb
       .getDb()
-      .db()
       .collection("books")
       .findOne({ _id: bookId });
     if (!book) {
@@ -48,7 +47,6 @@ const createBook = async (req, res, next) => {
     };
     const result = await mongodb
       .getDb()
-      .db()
       .collection("books")
       .insertOne(newBook);
     if (result.acknowledged) {
@@ -84,7 +82,6 @@ const updateBook = async (req, res, next) => {
     };
     const result = await mongodb
       .getDb()
-      .db()
       .collection("books")
       .updateOne({ _id: bookId }, { $set: updatedBook });
     if (result.modifiedCount > 0) {
@@ -105,7 +102,6 @@ const deleteBook = async (req, res, next) => {
     const bookId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDb()
-      .db()
       .collection("books")
       .deleteOne({ _id: bookId });
     if (result.deletedCount > 0) {

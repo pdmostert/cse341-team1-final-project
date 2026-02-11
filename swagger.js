@@ -97,9 +97,9 @@ This API uses OAuth 2.0 with GitHub for authentication.
       properties: {
         name: { type: "string" },
         location: { type: "string" },
-        established: { type: "string", format: "date" },
+        established: { type: "string" },
         contactEmail: { type: "string" },
-        phoneNumber: { type: "string" },
+        contactPhone: { type: "string" },
       },
     },
   },

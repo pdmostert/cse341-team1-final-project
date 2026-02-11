@@ -3,7 +3,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 const getAllUsers = async (req, res, next) => {
   try {
-    const users = await mongodb.getDb().db().collection("users").find();
+    const users = await mongodb.getDb().collection("users").find();
     const usersList = await users.toArray();
     res.status(200).json(usersList);
   } catch (err) {
@@ -16,7 +16,6 @@ const getUserByGithubId = async (req, res, next) => {
     const githubId = req.params.id;
     const user = await mongodb
       .getDb()
-      .db()
       .collection("users")
       .findOne({ githubId: githubId });
     if (!user) {
@@ -39,7 +38,6 @@ const updateUserRole = async (req, res, next) => {
     };
     const result = await mongodb
       .getDb()
-      .db()
       .collection("users")
       .updateOne({ _id: userId }, { $set: updatedData });
     if (result.modifiedCount > 0) {
@@ -60,7 +58,6 @@ const deleteUser = async (req, res, next) => {
     const userId = new ObjectId(req.params.id);
     const result = await mongodb
       .getDb()
-      .db()
       .collection("users")
       .deleteOne({ _id: userId });
     if (result.deletedCount > 0) {
