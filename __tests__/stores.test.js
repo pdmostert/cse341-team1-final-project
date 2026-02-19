@@ -8,6 +8,7 @@ jest.mock('../data/database', () => {
     collection: jest.fn().mockReturnThis(),
     find: jest.fn().mockReturnThis(),
     toArray: jest.fn().mockResolvedValue([]),
+    findOne: jest.fn().mockResolvedValue(null),
     insertOne: jest.fn().mockResolvedValue({ acknowledged: true, insertedId: '507f1f77bcf86cd799439011' }),
   };
   return {
@@ -39,5 +40,18 @@ describe('Stores API', () => {
 
     expect(res.statusCode).toBe(201);
     expect(res.body.name).toBe("Test Store");
+  });
+
+  it('POST /stores should fail with missing fields', async () => {
+    const res = await request(app)
+      .post('/stores')
+      .send({ name: "Incomplete Store" });
+    expect(res.statusCode).toBe(400);
+  });
+
+  it('GET /stores/:id should return 404 for invalid id', async () => {
+    const res = await request(app)
+      .get('/stores/000000000000000000000000');
+    expect(res.statusCode).toBe(404);
   });
 });
