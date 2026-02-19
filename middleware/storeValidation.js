@@ -31,6 +31,40 @@ const validateOrder = [
   handleValidationErrors,
 ];
 
+const validateStore = [
+  body("name")
+    .trim()
+    .notEmpty()
+    .withMessage("Store Name is required"),
+
+  body("location")
+    .trim()
+    .notEmpty()
+    .withMessage("Location is required"),
+
+  body("established")
+    .trim()
+    .notEmpty()
+    .withMessage("Established date is required")
+    .isDate()
+    .withMessage("Established date must be a valid date"),
+
+  body("contactEmail")
+    .trim()
+    .notEmpty()
+    .withMessage("Contact Email is required")
+    .isEmail()
+    .withMessage("Contact Email must be a valid email address"),
+
+  body("phoneNumber")
+    .trim()
+    .notEmpty()
+    .withMessage("Phone Number is required"),
+
+  handleValidationErrors,
+];
+
 module.exports = {
   validateOrder,
+  validateStore,
 };

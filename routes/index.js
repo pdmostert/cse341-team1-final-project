@@ -32,7 +32,7 @@ router.get("/docs", (req, res) => {
 
 router.use("/books", require("./books"));
 router.use("/authors", require("./authors"));
-router.use("/store", require("./store"));
+router.use("/stores", require("./store"));
 router.use("/users", require("./users"));
 router.use("/swagger", require("./swagger"));
 

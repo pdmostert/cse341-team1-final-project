@@ -3,13 +3,53 @@ const router = express.Router();
 
 const storeController = require("../controllers/storeController");
 const { isAuthenticated } = require("../middleware/authenticate");
-const { validateOrder } = require("../middleware/storeValidation");
+const { validateOrder, validateStore } = require("../middleware/storeValidation");
+
+router.get(
+  "/",
+  // #swagger.tags = ['Stores']
+  // #swagger.description = 'Endpoint to get all stores.'
+  storeController.getAllStores,
+);
 
 router.get(
   "/inventory",
   // #swagger.tags = ['Stores']
   // #swagger.description = 'Endpoint to get current inventory.'
   storeController.getInventory,
+);
+
+router.get(
+  "/:id",
+  // #swagger.tags = ['Stores']
+  // #swagger.description = 'Endpoint to get a store by ID.'
+  storeController.getStoreById,
+);
+
+router.post(
+  "/",
+  // #swagger.tags = ['Stores']
+  // #swagger.description = 'Endpoint to create a new store.'
+  isAuthenticated,
+  validateStore,
+  storeController.createStore,
+);
+
+router.put(
+  "/:id",
+  // #swagger.tags = ['Stores']
+  // #swagger.description = 'Endpoint to update a store by ID.'
+  isAuthenticated,
+  validateStore,
+  storeController.updateStore,
+);
+
+router.delete(
+  "/:id",
+  // #swagger.tags = ['Stores']
+  // #swagger.description = 'Endpoint to delete a store by ID.'
+  isAuthenticated,
+  storeController.deleteStore,
 );
 
 router.post(
