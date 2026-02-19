@@ -1,8 +1,8 @@
 const request = require('supertest');
 const app = require('../app');
-const mongodb = require('../data/database');
 
-// Mock the database
+/* global jest, describe, it, expect */
+
 jest.mock('../data/database', () => {
   const mockDb = {
     collection: jest.fn().mockReturnThis(),
